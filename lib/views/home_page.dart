@@ -44,17 +44,6 @@ class HomePage extends StatelessWidget {
             NewsListView()
           ],
         ),
-        // Column(
-        //   children: [
-        //     CategoriesListView(),
-        //     SizedBox(
-        //       height: 16,
-        //     ),
-        //     Expanded(
-        //       child: NewsListView(),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
