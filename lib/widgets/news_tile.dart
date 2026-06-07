@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/models/artical_model.dart';
 
 class NewsTile extends StatelessWidget {
-  const NewsTile({super.key});
+  final ArticalModel artical;
+  const NewsTile({super.key, required this.artical});
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +11,10 @@ class NewsTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadiusGeometry.circular(6),
-          child: const Image(
+          child: Image(
             image: NetworkImage(
-              "https://media.cnn.com/api/v1/images/stellar/prod/nhq202404080101-origa-20260605211815110.JPG?c=original&q=w_1202,c_fill/f_avif",
+              artical.urlToImage ??
+                  "https://mybjj.com.au/wp-content/uploads/2021/12/loading-icon-animated-gif-21.jpg",
             ),
             height: 200,
             width: double.infinity,
@@ -21,11 +24,11 @@ class NewsTile extends StatelessWidget {
         const SizedBox(
           height: 12,
         ),
-        const Text(
-          "Large Title should be placed Large Title should be placedLarge Title should be placedLarge Title should be placedLarge Title should be placed ",
+        Text(
+          artical.title,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.w500,
@@ -34,10 +37,10 @@ class NewsTile extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        const Text(
-          "and here is the description if the news you can plce it here ",
+        Text(
+          artical.description ?? "",
           maxLines: 2,
-          style: TextStyle(color: Colors.grey, fontSize: 14),
+          style: const TextStyle(color: Colors.grey, fontSize: 14),
         )
       ],
     );
